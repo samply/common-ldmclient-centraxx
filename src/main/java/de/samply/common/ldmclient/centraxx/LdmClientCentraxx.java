@@ -7,6 +7,7 @@ import de.samply.common.ldmclient.LdmClientException;
 import de.samply.common.ldmclient.LdmClientUtil;
 import de.samply.common.ldmclient.LdmClientView;
 import de.samply.common.ldmclient.centraxx.model.CentraxxInfo;
+import de.samply.common.ldmclient.centraxx.utils.PercentageLogger;
 import de.samply.common.ldmclient.model.LdmQueryResult;
 import de.samply.share.model.ccp.QueryResult;
 import de.samply.share.model.common.Error;
@@ -168,11 +169,18 @@ public class LdmClientCentraxx extends
     QueryResultStatistic queryResultStatistic = getQueryResultStatistic(location);
 
     if (queryResultStatistic != null && queryResultStatistic.getTotalSize() > 0) {
-      for (int i = 0; i < queryResultStatistic.getNumberOfPages(); ++i) {
+
+      int numberOfPages = queryResultStatistic.getNumberOfPages();
+      PercentageLogger percentageLogger = new PercentageLogger(logger, numberOfPages,
+          "getting results from centraxx...");
+
+      for (int i = 0; i < numberOfPages; ++i) {
         QueryResult queryResultPage = getResultPage(location, i);
         queryResult.getPatient().addAll(queryResultPage.getPatient());
       }
       queryResult.setId(queryResultStatistic.getRequestId());
+      percentageLogger.incrementCounter();
+
     }
     return queryResult;
   }
