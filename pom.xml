@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>common-ldmclient.centraxx</artifactId>
-    <version>6.0.0</version>
+    <version>6.1.0-SNAPSHOT</version>
 
     <name>ldmclient-centraxx</name>
     <description>Samply Common LDM Client Centraxx is a library for the communication with Local Datamanagement systems. It extends the abstract Samply Common LDM Client.</description>
