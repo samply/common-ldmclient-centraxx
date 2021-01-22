@@ -35,22 +35,18 @@ public class PercentageLogger {
 
       counter++;
 
-      Double percentage = 100.0D * ((double) counter) / ((double) numberOfElements);
-      int ipercentage = percentage.intValue();
+      int percentage = 100 * counter / numberOfElements;
 
-      if (lastPercentage != ipercentage) {
 
-        lastPercentage = ipercentage;
+      if (lastPercentage != percentage) {
 
-        if (ipercentage % 10 == 0) {
-          logger.debug(ipercentage + " %");
+        lastPercentage = percentage;
+
+        if (percentage % 10 == 0) {
+          logger.debug(percentage + " %");
         }
-
       }
     }
-
-
   }
-
 
 }

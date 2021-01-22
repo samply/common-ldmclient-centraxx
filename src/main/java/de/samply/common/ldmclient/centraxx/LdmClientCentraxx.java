@@ -174,12 +174,13 @@ public class LdmClientCentraxx extends
       PercentageLogger percentageLogger = new PercentageLogger(logger, numberOfPages,
           "getting results from centraxx...");
 
-      for (int i = 0; i < numberOfPages; ++i) {
+      for (int i = 0; i < numberOfPages; i++) {
         QueryResult queryResultPage = getResultPage(location, i);
         queryResult.getPatient().addAll(queryResultPage.getPatient());
+        percentageLogger.incrementCounter();
       }
       queryResult.setId(queryResultStatistic.getRequestId());
-      percentageLogger.incrementCounter();
+
 
     }
     return queryResult;
