@@ -13,9 +13,9 @@ public class PercentageLogger {
   /**
    * Calculates percentage of remaining steps and logs it.
    *
-   * @param logger logger
+   * @param logger           logger
    * @param numberOfElements number of elements
-   * @param description description of the operation
+   * @param description      description of the operation
    */
   public PercentageLogger(Logger logger, int numberOfElements, String description) {
 
@@ -31,17 +31,17 @@ public class PercentageLogger {
    */
   public void incrementCounter() {
 
-      counter++;
-      int percentage = 100 * counter / numberOfElements;
+    counter++;
+    int percentage = 100 * counter / numberOfElements;
 
-      if (lastPercentage != percentage) {
+    if (lastPercentage != percentage) {
 
-        lastPercentage = percentage;
+      lastPercentage = percentage;
 
-        if (percentage % 10 == 0) {
-          logger.debug(percentage + " %");
-        }
+      if (percentage % 10 == 0) {
+        logger.debug(percentage + " %");
       }
+    }
 
   }
 
