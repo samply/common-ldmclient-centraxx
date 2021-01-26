@@ -7,8 +7,8 @@ import de.samply.common.ldmclient.LdmClientException;
 import de.samply.common.ldmclient.LdmClientUtil;
 import de.samply.common.ldmclient.LdmClientView;
 import de.samply.common.ldmclient.centraxx.model.CentraxxInfo;
-import de.samply.common.ldmclient.centraxx.utils.PercentageLogger;
 import de.samply.common.ldmclient.model.LdmQueryResult;
+import de.samply.share.common.utils.PercentageLogger;
 import de.samply.share.model.ccp.QueryResult;
 import de.samply.share.model.common.Error;
 import de.samply.share.model.common.QueryResultStatistic;
@@ -36,8 +36,8 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Client to communicate with the local datamanagement implementation "Centraxx".
@@ -49,7 +49,7 @@ public class LdmClientCentraxx extends
   private static final String REST_PATH_TEILER = "teiler/";
   private static final String REST_PATH_INFO = "info/";
   private static final boolean CACHING_DEFAULT_VALUE = false;
-  private final Logger logger = LoggerFactory.getLogger(LdmClientCentraxx.class);
+  private final Logger logger = LogManager.getLogger(LdmClientCentraxx.class);
 
   public LdmClientCentraxx(CloseableHttpClient httpClient, String centraxxBaseUrl)
       throws LdmClientException {
