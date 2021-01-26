@@ -1,14 +1,32 @@
 package de.samply.common.ldmclient.centraxx.utils;
 
-import com.cookingfox.guava_preconditions.Preconditions;
+import com.google.common.base.Preconditions;
 import org.slf4j.Logger;
+
+/**
+ * PercentageLogger is intended to log the progress of another process, that consists of
+ * "numberOfElements" steps and that is described through "description".
+ *
+ * <p>Example:</p>
+ *
+ * <p>doing something in several steps...</p>
+ * <p>10%</p>
+ * <p>40%</p>
+ * <p>70%</p>
+ * <p>90%</p>
+ * <p>100%</p>
+ */
 
 public class PercentageLogger {
 
-  private Logger logger;
-  private int numberOfElements;
+  private final Logger logger;
+  private final int numberOfElements;
+  private final String description;
+
   private int counter = 0;
   private int lastPercentage = 0;
+
+  private boolean isStarted = false;
 
   /**
    * Calculates percentage of remaining steps and logs it.
@@ -19,11 +37,20 @@ public class PercentageLogger {
    */
   public PercentageLogger(Logger logger, int numberOfElements, String description) {
 
+    Preconditions.checkArgument(numberOfElements > 0, "numberOfElements is negative");
+
     this.logger = logger;
     this.numberOfElements = numberOfElements;
-    Preconditions.checkArgument(numberOfElements > 0, "numberOfElements is negative");
-    logger.debug(description);
+    this.description = description;
 
+  }
+
+  /**
+   * Logs description.
+   */
+  public void start() {
+    logger.debug(description);
+    isStarted = true;
   }
 
   /**
@@ -31,18 +58,22 @@ public class PercentageLogger {
    */
   public void incrementCounter() {
 
-    counter++;
-    int percentage = 100 * counter / numberOfElements;
+    if (!isStarted){
+      start();
+    }
+
+    int percentage = 100 * ++counter / numberOfElements;
 
     if (lastPercentage != percentage) {
 
       lastPercentage = percentage;
-
       if (percentage % 10 == 0) {
         logger.debug(percentage + " %");
       }
+
     }
 
   }
+
 
 }
