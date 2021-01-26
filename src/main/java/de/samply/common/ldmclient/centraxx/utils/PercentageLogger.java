@@ -58,7 +58,7 @@ public class PercentageLogger {
    */
   public void incrementCounter() {
 
-    if (!isStarted){
+    if (!isStarted) {
       start();
     }
 
