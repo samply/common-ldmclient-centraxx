@@ -1,5 +1,6 @@
 package de.samply.common.ldmclient.centraxx.utils;
 
+import com.cookingfox.guava_preconditions.Preconditions;
 import org.slf4j.Logger;
 
 public class PercentageLogger {
@@ -12,17 +13,16 @@ public class PercentageLogger {
   /**
    * Calculates percentage of remaining steps and logs it.
    *
-   * @param logger logger
+   * @param logger           logger
    * @param numberOfElements number of elements
-   * @param description description of the operation
+   * @param description      description of the operation
    */
   public PercentageLogger(Logger logger, int numberOfElements, String description) {
 
     this.logger = logger;
     this.numberOfElements = numberOfElements;
-    if (numberOfElements > 0) {
-      logger.debug(description);
-    }
+    Preconditions.checkArgument(numberOfElements > 0, "numberOfElements is negative");
+    logger.debug(description);
 
   }
 
@@ -31,26 +31,18 @@ public class PercentageLogger {
    */
   public void incrementCounter() {
 
-    if (numberOfElements > 0) {
+    counter++;
+    int percentage = 100 * counter / numberOfElements;
 
-      counter++;
+    if (lastPercentage != percentage) {
 
-      Double percentage = 100.0D * ((double) counter) / ((double) numberOfElements);
-      int ipercentage = percentage.intValue();
+      lastPercentage = percentage;
 
-      if (lastPercentage != ipercentage) {
-
-        lastPercentage = ipercentage;
-
-        if (ipercentage % 10 == 0) {
-          logger.debug(ipercentage + " %");
-        }
-
+      if (percentage % 10 == 0) {
+        logger.debug(percentage + " %");
       }
     }
 
-
   }
-
 
 }
