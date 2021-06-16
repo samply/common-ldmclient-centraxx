@@ -7,11 +7,11 @@
     <parent>
         <groupId>de.samply</groupId>
         <artifactId>parent</artifactId>
-        <version>11.1.0</version>
+        <version>11.1.1</version>
     </parent>
 
     <artifactId>common-ldmclient.centraxx</artifactId>
-    <version>6.1.2</version>
+    <version>6.1.3</version>
 
     <name>ldmclient-centraxx</name>
     <description>Samply Common LDM Client Centraxx is a library for the communication with Local Datamanagement systems. It extends the abstract Samply Common LDM Client.</description>
@@ -60,6 +60,7 @@
         <junit.version>4.12</junit.version>
         <commons-io.version>2.6</commons-io.version>
         <guava.version>30.1-jre</guava.version>
+        <share-common.version>4.2.0</share-common.version>
     </properties>
 
     <dependencies>
@@ -103,6 +104,11 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.samply</groupId>
+            <artifactId>share-common</artifactId>
+            <version>${share-common.version}</version>
         </dependency>
 
     </dependencies>
