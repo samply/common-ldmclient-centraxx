@@ -36,8 +36,9 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * Client to communicate with the local datamanagement implementation "Centraxx".
@@ -49,7 +50,7 @@ public class LdmClientCentraxx extends
   private static final String REST_PATH_TEILER = "teiler/";
   private static final String REST_PATH_INFO = "info/";
   private static final boolean CACHING_DEFAULT_VALUE = false;
-  private final Logger logger = LogManager.getLogger(LdmClientCentraxx.class);
+  private final Logger logger = LoggerFactory.getLogger(LdmClientCentraxx.class);
 
   public LdmClientCentraxx(CloseableHttpClient httpClient, String centraxxBaseUrl)
       throws LdmClientException {
@@ -173,6 +174,7 @@ public class LdmClientCentraxx extends
       int numberOfPages = queryResultStatistic.getNumberOfPages();
       PercentageLogger percentageLogger = new PercentageLogger(logger, numberOfPages,
           "getting results from centraxx...");
+      percentageLogger.start();
 
       for (int i = 0; i < numberOfPages; i++) {
         QueryResult queryResultPage = getResultPage(location, i);
