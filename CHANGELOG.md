@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
-## [6.2.0 - 2021-12-30]
+## [6.2.1 - 2022-01-28]
 - Common ldm client 6.0.1
 
 ## [6.2.0 - 2021-12-30]
