@@ -12,12 +12,6 @@ on:
     branches:
       - master
       - develop
-  # This passes the secrets from calling workflow to the called workflow
-  secrets:
-    MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-    MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-    OSSRH_GPG_SECRET_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
-    OSSRH_GPG_SECRET_KEY_PASSWORD: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
 
 jobs:
   build:
@@ -33,3 +27,9 @@ jobs:
       # java-distribution: "openjdk"
       # If you need special command-line parameters passed to the maven cli, you can specify them here:
       # maven-command-line-parameters: "-P yourCustomMavenProfile"
+      # This passes the secrets from calling workflow to the called workflow
+    secrets:
+      MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+      MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+      OSSRH_GPG_SECRET_KEY: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+      OSSRH_GPG_SECRET_KEY_PASSWORD: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
