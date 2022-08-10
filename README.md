@@ -32,7 +32,7 @@ To use the module, include the following artifact in your project.
 <dependency>
     <groupId>de.samply</groupId>
     <artifactId>common-ldmclient.centraxx</artifactId>
-    <version>3.0.1</version>
+    <version>6.2.1</version>
 </dependency>
 ``` 
 
