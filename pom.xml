@@ -11,8 +11,7 @@
     </parent>
 
     <artifactId>common-ldmclient.centraxx</artifactId>
-    <version>6.2.1-SNAPSHOT</version>
-
+    <version>6.2.1</version>
     <name>ldmclient-centraxx</name>
     <description>Samply Common LDM Client Centraxx is a library for the communication with Local Datamanagement systems. It extends the abstract Samply Common LDM Client.</description>
     <url>https://github.com/samply/common-ldmclient-centraxx</url>
@@ -88,12 +87,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <scope>test</scope>
             <version>${commons-io.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
